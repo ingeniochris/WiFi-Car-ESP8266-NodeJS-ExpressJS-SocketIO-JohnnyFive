@@ -30,7 +30,7 @@ app.use(morgan('tiny'));
 
 
 //routes
-
+app.use(require('./routes/index'));
 
 
 //statics files
