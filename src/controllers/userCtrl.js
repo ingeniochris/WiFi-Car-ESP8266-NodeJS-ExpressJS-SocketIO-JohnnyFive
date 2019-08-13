@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const { check, validationResult } = require("express-validator");
+
 
 const User = require("../models/userModel");
 
@@ -12,11 +12,42 @@ userCtrl.getRegister = (req, res) => {
 
 
 userCtrl.postRegister =  async (req, res) => {
-   
     const { name, email, password } = req.body;
-    console.log(req.body)
-    let resEmail = await User.findOne({ email });
-    if (resEmail) {
+    let errors = [];
+    if(name.length<=0){
+      errors.push({text: 'Ingresa un Nombre porfavor'})
+    }
+    if(email.length<=0){
+      errors.push({text: 'Ingresa un Email porfavor'})
+    }
+    if(password.length<=0){
+      errors.push({text: 'Ingresa un Password porfavor'})
+    }
+    if (name.length < 4) {
+      errors.push({text: 'Ingresa un nombre con almenos 4 caracteres.'})
+    }
+    if (email.length < 7) {
+      errors.push({text: 'Ingresa un email correcto'})
+    }
+   
+    if (password.length < 4) {
+      errors.push({text: 'Porfavor ingresa un password de almenos 4 caracteres.'})
+    }
+
+  
+    if (errors.length > 0) {
+      res.render('users/register', {
+        errors,
+        name: req.body.name,
+        email:req.body.email,
+        password: req.body.password
+        
+      });
+
+    }else{
+
+    let user = await User.findOne({ email });
+    if (user) {
       req.flash("error_msg", "El usuario ya se encuentra registrado");
       res.redirect("/app/register");
     } else {
@@ -34,6 +65,7 @@ userCtrl.postRegister =  async (req, res) => {
         "Usuario registrado ahora puedes iniciar sesion"
       );
       res.redirect("/app/login");
+    }
     }
   };
 

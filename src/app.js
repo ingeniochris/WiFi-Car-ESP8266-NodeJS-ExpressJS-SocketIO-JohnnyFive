@@ -5,10 +5,11 @@ const hbs = require ('express-handlebars');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-
+const bodyParser = require("body-parser");
 
 //instances
 const app = express();
+
 
 
 //settings
@@ -26,7 +27,7 @@ app.set('view engine', 'hbs');
 
 //middlewares
 app.use(morgan('tiny'));
-app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
     secret: 'Diynamic',
     resave: true,
@@ -40,6 +41,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+// Global variables 
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
+
 //routes
 app.use(require('./routes/index'));
 app.use(require('./routes/users'));
@@ -48,14 +59,6 @@ app.use(require('./routes/control'));
 //statics files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Global variables
-app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    res.locals.user = req.user || null;
-    next();
-  });
 
 
 module.exports= app; 

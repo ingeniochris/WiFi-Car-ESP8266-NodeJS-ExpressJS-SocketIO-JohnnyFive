@@ -1,6 +1,7 @@
 const {Router}=require('express');
 const route = Router();
 
+
 const{getRegister, postRegister, getLogin, postLogin, getLogout }=require('../controllers/userCtrl');
 
 route.route('/app/register')

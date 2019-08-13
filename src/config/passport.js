@@ -15,7 +15,7 @@ module.exports =  (passport)=>{
     });
 
     passport.use(new LocalStrategy({
-        usernameField: 'email'
+        usernameField: 'email',passwordField: 'password'
     }, async (email, password, done)=>{
        const userNew = await user.findOne({email});
        if(!userNew) return done(null,false,{message: 'Usuario no encontrado'});
