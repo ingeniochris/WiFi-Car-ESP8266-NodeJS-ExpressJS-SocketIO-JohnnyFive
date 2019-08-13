@@ -2,6 +2,8 @@ const express = require ('express');
 const morgan = require('morgan');
 const path = require ('path');
 const hbs = require ('express-handlebars');
+const passport = require('passport');
+const flash = require('connect-flash');
 
 
 //instances
@@ -23,8 +25,14 @@ app.set('view engine', 'hbs');
 
 //middlewares
 app.use(morgan('tiny'));
+app.use(express.urlencoded({extended: false}));
 
-
+//passport
+// passport
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 //routes
 app.use(require('./routes/index'));
