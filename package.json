@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "scss": "npx sass --watch src/public/css/index.scss:src/public/css/style.css"
+    "sass": "npx sass --watch src/public/css/index.scss:src/public/css/style.css"
   },
   "repository": {
     "type": "git",

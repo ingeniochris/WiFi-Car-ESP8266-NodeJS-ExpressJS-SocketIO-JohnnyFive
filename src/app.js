@@ -28,7 +28,7 @@ app.use(morgan('tiny'));
 
 //routes
 app.use(require('./routes/index'));
-
+app.use(require('./routes/users'));
 
 //statics files
 app.use(express.static(path.join(__dirname, 'public')));
