@@ -18,22 +18,22 @@ userCtrl.postRegister =  async (req, res) => {
     let resEmail = await User.findOne({ email });
     if (resEmail) {
       req.flash("error_msg", "El usuario ya se encuentra registrado");
-      res.redirect("/users/register");
+      res.redirect("/app/register");
     } else {
       const newUser = new User({
         name,
         email,
         password
       });
-      let salt = await bcrypt.genSaltSync(10);
-      let hash = await bcrypt.hash(newUser.password , salt);
+      let salt = await bcrypt.genSalt(10);
+      let hash = await bcrypt.hash(newUser.password, salt);
       newUser.password = hash;
       await newUser.save();
       req.flash(
         "success_msg",
         "Usuario registrado ahora puedes iniciar sesion"
       );
-      res.redirect("/users/login");
+      res.redirect("/app/login");
     }
   };
 
@@ -43,10 +43,17 @@ userCtrl.getLogin = (req,res)=>{
 
 userCtrl.postLogin = (req,res,next)=>{
   passport.authenticate('local', {
-    successRedirect: '/app/control',
-    failureRedirect: '/users/login',
+    successRedirect: '/app/car',
+    failureRedirect: '/app/login',
     failureFlash: true
   })(req, res, next);
+}
+
+
+userCtrl.getLogout= (req,res)=>{
+  req.logout();
+  req.flash('success_msg', ' sesion finalizada');
+  res.redirect('app/login')
 }
 
 module.exports = userCtrl;

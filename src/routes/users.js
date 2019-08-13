@@ -1,7 +1,7 @@
 const {Router}=require('express');
 const route = Router();
 
-const{getRegister, postRegister, getLogin, postLogin }=require('../controllers/userCtrl');
+const{getRegister, postRegister, getLogin, postLogin, getLogout }=require('../controllers/userCtrl');
 
 route.route('/app/register')
      .get(getRegister)
@@ -9,7 +9,10 @@ route.route('/app/register')
 
 route.route('/app/login')
      .get(getLogin)
-     .post(postLogin)     
+     .post(postLogin)   
+     
+route.route('/logout')   
+     .get(getLogout)
 
 
 
