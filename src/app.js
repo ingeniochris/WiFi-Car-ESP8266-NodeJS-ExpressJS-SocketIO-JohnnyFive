@@ -6,6 +6,8 @@ const hbs = require ('express-handlebars');
 
 //instances
 const app = express();
+
+//some variables
 const views = app.get('views');
 
 
@@ -32,7 +34,7 @@ app.use(morgan('tiny'));
 
 
 //statics files
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
