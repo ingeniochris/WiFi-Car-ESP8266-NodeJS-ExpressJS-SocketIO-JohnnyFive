@@ -1,8 +1,12 @@
 const indexControl={};
 
-indexControl.getIndex = (req,res)=>{
-    res.render('index', {title:'Car WiFi Aplication'});
+indexControl.getIndex = async (req,res)=>{
+     await res.render('index');
 };
+
+indexControl.getAbout= async (req,res)=>{
+  await  res.render('partials/about');
+}
 
 
 

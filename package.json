@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "sass": "npx sass --watch src/public/css/index.scss:src/public/css/style.css"
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",

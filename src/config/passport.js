@@ -6,7 +6,7 @@ const user = require('../models/userModel');
 module.exports =  (passport)=>{
 
     passport.serializeUser( (user, done)=>{
-        done(null, user.id);
+        done(null, user._id);
     });
 
     passport.deserializeUser( async (id,done)=>{
@@ -15,7 +15,7 @@ module.exports =  (passport)=>{
     });
 
     passport.use(new LocalStrategy({
-        usernameField: 'email',passwordField: 'password'
+        usernameField: 'email'
     }, async (email, password, done)=>{
        const userNew = await user.findOne({email});
        if(!userNew) return done(null,false,{message: 'Usuario no encontrado'});

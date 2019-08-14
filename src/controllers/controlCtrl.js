@@ -1,8 +1,8 @@
 const controlCtrl={};
 
 
-controlCtrl.getControl= (req,res)=>{
-    res.render('control/control');
+controlCtrl.getControl= async (req,res)=>{
+   await res.render('control/control');
 }
 
 

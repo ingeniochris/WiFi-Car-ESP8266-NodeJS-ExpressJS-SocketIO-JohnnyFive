@@ -5,7 +5,7 @@ const hbs = require ('express-handlebars');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-const bodyParser = require("body-parser");
+
 
 //instances
 const app = express();
@@ -27,18 +27,20 @@ app.set('view engine', 'hbs');
 
 //middlewares
 app.use(morgan('tiny'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'Diynamic',
     resave: true,
     saveUninitialized: true
   }));
 
-//passport
-// passport
+// Passport middleware
 require('./config/passport')(passport);
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Connect flash
 app.use(flash());
 
 // Global variables 

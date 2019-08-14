@@ -8,10 +8,11 @@
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
- {{#if user}}       
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home </a>
       </li>
+ {{#if user}}       
+      
       <li class="nav-item">
         <a class="nav-link" href="/app/car/">Control</a>
       </li>
@@ -26,7 +27,7 @@
         <a class="nav-link" href="/app/login" >Entrar</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-warning bg-light" href="/app/register">Comience </a>
+        <a class="nav-link btn btn-warning bg-light" href="/app/register">Comience<span class="sr-only">(current)</span> </a>
       </li>
      
  {{/if}}     

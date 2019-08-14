@@ -6,7 +6,7 @@ const User = require("../models/userModel");
 
 const userCtrl = {};
 
-userCtrl.getRegister = (req, res) => {
+userCtrl.getRegister = (req, res, next) => {
   res.render("users/register");
 };
 
@@ -64,7 +64,7 @@ userCtrl.postRegister =  async (req, res) => {
         "success_msg",
         "Usuario registrado ahora puedes iniciar sesion"
       );
-      res.redirect("/app/login");
+    await res.redirect("/app/login");
     }
     }
   };
@@ -74,6 +74,7 @@ userCtrl.getLogin = (req,res)=>{
 }
 
 userCtrl.postLogin = (req,res,next)=>{
+  if (req.user) return next();
   passport.authenticate('local', {
     successRedirect: '/app/car',
     failureRedirect: '/app/login',
@@ -82,10 +83,10 @@ userCtrl.postLogin = (req,res,next)=>{
 }
 
 
-userCtrl.getLogout= (req,res)=>{
+userCtrl.getLogout= async (req,res)=>{
   req.logout();
   req.flash('success_msg', ' sesion finalizada');
-  res.redirect('app/login')
+ await res.redirect('app/login')
 }
 
 module.exports = userCtrl;

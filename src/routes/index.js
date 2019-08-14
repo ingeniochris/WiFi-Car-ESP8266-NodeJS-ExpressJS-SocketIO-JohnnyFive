@@ -1,11 +1,16 @@
 const {Router}=require('express');
 const route = Router();
 
-const {getIndex} = require ('../controllers/indexCtrl');
+const { forwardAuthenticated  } = require('../helpers/auth');
+const {getIndex, getAbout} = require ('../controllers/indexCtrl');
 
 
 route.route('/')
-     .get(getIndex)
+     .get(forwardAuthenticated,getIndex)
+
+
+     route.route('/about')
+     .get(getAbout)
 
 
 
