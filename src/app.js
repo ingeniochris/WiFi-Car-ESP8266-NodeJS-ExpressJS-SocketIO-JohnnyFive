@@ -5,6 +5,7 @@ const hbs = require("express-handlebars");
 const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
+const Rollbar = require("rollbar");
 
 //instances
 const app = express();
@@ -58,5 +59,15 @@ app.use(require("./routes/control"));
 
 //statics files
 app.use(express.static(path.join(__dirname, "public")));
+
+//Rollbar  Dev 
+const rollbar = new Rollbar({
+  accessToken: process.env.ROLLBAR,
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
+
+// record a generic message and send it to Rollbar
+rollbar.log("Hello world!");
 
 module.exports = app;
