@@ -1,66 +1,62 @@
-const express = require ('express');
-const morgan = require('morgan');
-const path = require ('path');
-const hbs = require ('express-handlebars');
-const passport = require('passport');
-const flash = require('connect-flash');
-const session = require('express-session');
-
+const express = require("express");
+const morgan = require("morgan");
+const path = require("path");
+const hbs = require("express-handlebars");
+const passport = require("passport");
+const flash = require("connect-flash");
+const session = require("express-session");
 
 //instances
 const app = express();
 
-
-
 //settings
-app.set('port', process.env.PORT);
-app.set('views', path.join(__dirname, 'views'));
-app.engine('hbs', hbs({
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir: path.join(app.get('views'), 'partials'),
-    defaultLayout: 'main',
-    extname: 'hbs'
-}));
-app.set('view engine', 'hbs');
-
-
+app.set("port", process.env.PORT);
+app.set("views", path.join(__dirname, "views"));
+app.engine(
+  "hbs",
+  hbs({
+    layoutsDir: path.join(app.get("views"), "layouts"),
+    partialsDir: path.join(app.get("views"), "partials"),
+    defaultLayout: "main",
+    extname: "hbs"
+  })
+);
+app.set("view engine", "hbs");
 
 //middlewares
-app.use(morgan('tiny'));
+app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
-app.use(session({
-    secret: 'Diynamic',
+app.use(
+  session({
+    secret: "Diynamic",
     resave: true,
     saveUninitialized: true
-  }));
+  })
+);
 
 // Passport middleware
-require('./config/passport')(passport);
-
+require("./config/passport")(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Connect flash
 app.use(flash());
 
-// Global variables 
+// Global variables
 app.use((req, res, next) => {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
   res.locals.user = req.user || null;
   next();
 });
 
-
 //routes
-app.use(require('./routes/index'));
-app.use(require('./routes/users'));
-app.use(require('./routes/control'));
+app.use(require("./routes/index"));
+app.use(require("./routes/users"));
+app.use(require("./routes/control"));
 
 //statics files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-
-
-module.exports= app; 
+module.exports = app;

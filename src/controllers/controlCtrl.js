@@ -1,12 +1,7 @@
-const controlCtrl={};
+const controlCtrl = {};
 
+controlCtrl.getControl = async (req, res) => {
+  await res.render("control/control");
+};
 
-controlCtrl.getControl= async (req,res)=>{
-   await res.render('control/control');
-}
-
-
-
-
-
-module.exports=controlCtrl;
+module.exports = controlCtrl;
