@@ -63,9 +63,13 @@ app.use(express.static(path.join(__dirname, "public")));
 //Rollbar  Dev 
 const rollbar = new Rollbar({
   accessToken: process.env.ROLLBAR,
+  environment: "development",
   captureUncaught: true,
   captureUnhandledRejections: true
 });
+
+// Use the rollbar error handler to send exceptions to your rollbar account
+app.use(rollbar.errorHandler());
 
 // record a generic message and send it to Rollbar
 rollbar.log("Hello world!");
