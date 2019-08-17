@@ -1,18 +1,47 @@
-*{
-  margin:0;
-  padding:0;
+    
+body, html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-.bg-uno{
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.9),  
-    rgb(0, 106, 255, 0.9)  
-    ),
-  url(../img/C.png);
- background-position: center;
- 
- background-size: cover;
- height: 100vh;
+body {
+  background: linear-gradient(rgba(219, 224, 243, 0.8), rgb(0, 106, 255, 0.9)),url("/img/C.png");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
 }
 
+.logo {
+  height: 40px;
+  margin-top: 20px;
+}
 
+.text-description {
+  letter-spacing: 5px;
+  font-family: sans-serif;    
+  color: #fff;
+}
+
+.form-control {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+a .fab {
+  color: #ffc;
+  font-size: 30px;
+  margin: 0 10px;
+}
+
+.pol{
+  width: 20rem;
+  height: 20rem;
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+}
+
+.tx{
+  font-family: 'ArchicocoRegular'; 
+  font-weight: bold; 
+  font-style: normal; 
+}

@@ -62,8 +62,7 @@ typings/
 .next
 
 # images
-.png 
-.jpg 
+public/ 
 =======
 node_modules
 .env
