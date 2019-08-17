@@ -1,6 +1,8 @@
 <div class="container p-5 ">
   <h1>Registro</h1>
-  <div class="mx-auto " style="width: 18rem;">
+  <div class="mx-auto " style="width: 20rem;">
+    {{> msg}}
+  {{> errors}}
     <form action="/app/register" method="POST">
       <div class="form-group">
         <label for="name">Nombre:</label>

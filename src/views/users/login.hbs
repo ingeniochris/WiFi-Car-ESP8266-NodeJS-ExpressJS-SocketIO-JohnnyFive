@@ -1,8 +1,9 @@
 <div class="container p-5 ">
   <h1>Login</h1>
-  <div class="mx-auto " style="width: 18rem;">
+  <div class="mx-auto " style="width: 20rem;">
+    {{> msg}}
+  {{> errors}}
     <form action="/app/login" method="POST">
-
       <div class="form-group">
         <label for="email">Email:</label>
         <input name="email" type="email" class="form-control" placeholder="Registra tu nombre" value="{{email}}"
@@ -17,6 +18,7 @@
 
       <button type="submit" class="btn btn-block btn-dark ">Entrar</button>
     </form>
+    
   </div>
 
 </div>
