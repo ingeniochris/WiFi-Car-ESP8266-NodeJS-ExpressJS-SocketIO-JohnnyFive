@@ -1,25 +1,27 @@
-<div class="container p-5 ">
-  <h1>Registro</h1>
+
+<div class="container mt-4 position-relative ovf ">
+  <h1 class="title1 display-4 font-weight-bold">Registro</h1>
   <div class="mx-auto " style="width: 20rem;">
     {{> msg}}
   {{> errors}}
     <form action="/app/register" method="POST">
       <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input name="name" type="text" class="form-control" placeholder="Ingresa tu nombre" value="{{name}}" required
+        <label for="name"> <strong>Nombre</strong></label>
+        <input name="name" type="text" class="form-control rounded-pill  text-center" placeholder="Ingresa tu nombre" value="{{name}}" required
           autofocus>
       </div>
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input name="email" type="email" class="form-control" placeholder="Ingresa tu nombre" value="{{email}}" required
+        <label for="email"> <strong>Email :</strong></label>
+        <input name="email" type="email" class="form-control rounded-pill  text-center" placeholder="Ingresa tu nombre" value="{{email}}" required
           autofocus>
       </div>
       <div class="form-group">
-        <label for="password">Password:</label>
-        <input name="password" type="password" class="form-control" placeholder="Ingresa tu password"
+        <label for="password"><strong>Password:</strong></label>
+        <input name="password" type="password" class="form-control rounded-pill  text-center" placeholder="Ingresa tu password"
           name="{{password}}" required>
       </div>
-      <button type="submit" class="btn btn-block btn-dark">Registro</button>
+      <button type="submit" class="btn btn-block btn-primary"><strong>Registrate</strong></button>
+      <a href="/app/login" class="text-decoration-none font-weight-lighter pt-5 title1">Ya tengo una cuenta.</a>
     </form>
   </div>
 </div>

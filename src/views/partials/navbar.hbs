@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100">
-  <a class="navbar-brand" href="#">WiFi Car</a>
+<nav class="navbar navbar-expand-lg navbar-light   w-100">
+  <a class="navbar-brand font-weight-bold title1" href="#">WiFi Kart</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,24 +13,22 @@
       {{#if user}}
 
       <li class="nav-item">
-        <a class="nav-link" href="/app/car/">Control</a>
+        <a class="nav-link font-weight-bold " href="/app/car/">Control</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">Acerca de</a>
+        <a class="nav-link font-weight-bold" href="/about">Acerca de</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/logout">Salir</a>
+        <a class="nav-link font-weight-bold" href="/logout">Salir</a>
       </li>
       {{else}}
       <li class="nav-item active">
-        <a class="nav-link" href="/">Inicio </a>
+        <a class="nav-link font-weight-bold " href="/">Inicio </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/app/login">Entrar</a>
+      <li class="nav-item active">
+        <a class="nav-link font-weight-bold" href="/app/login">Entrar</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-danger bg-transparent  " href="/app/register"><strong>Comience</strong> </a>
-      </li>
+     
 
       {{/if}}
     </ul>

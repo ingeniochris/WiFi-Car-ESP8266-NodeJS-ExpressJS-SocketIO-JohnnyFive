@@ -1,15 +1,20 @@
-    
-body, html {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
+  
 
 body {
+  position: sticky;
+  height:100vh;
+  width: 100%;
+  margin: 0;
+  padding:0;
+  overflow: hidden;
   background: linear-gradient(rgba(219, 224, 243, 0.8), rgb(0, 106, 255, 0.9)),url("/img/C.png");
-  background-size: cover;
+  color: antiquewhite;
   background-position: center;
-  color: #fff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-attachment: fixed;
+  color: azure;
 }
 
 .logo {
@@ -27,19 +32,57 @@ body {
   background: transparent !important;
   color: #fff !important;
 }
+.form-group{
+  color: azure;
+}
 
 a .fab {
-  color: #ffc;
+  color: azure;
   font-size: 30px;
   margin: 0 10px;
 }
 
 .pol{
-  width: 20rem;
-  height: 20rem;
-  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  width: 21rem;
+  height: 17rem;
 }
 
-nav{
-  z-index: 150;
+nav {
+  position:fixed !important;
+  top:0;
+  left:0;
+  z-index:1000;
+  background: transparent !important;
+  color: aliceblue;
+ 
 }
+nav ul li{
+  color: crimson;
+}
+  nav ul li a:hover {
+    background: #1045b9a4;
+  text-decoration-line: underline;
+  border-radius: 15px;
+  
+}
+
+.title1{
+  text-shadow: 3px 3px 3px rgb(129, 43, 96);
+  color: azure !important;
+}
+
+
+@media (max-width: 767.98px) { 
+  nav{
+    background: rgba(255, 255, 255, 1) !important;
+    color: brown !important;
+    
+  }
+  .title1{
+    display: none !important;
+  }
+  .pol{
+    width: 18rem;
+    height: 13rem;
+  }
+ }

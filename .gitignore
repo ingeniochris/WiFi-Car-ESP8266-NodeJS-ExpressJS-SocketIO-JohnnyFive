@@ -63,6 +63,7 @@ typings/
 
 # images
 public/ 
+.vscode/
 =======
 node_modules
 .env
