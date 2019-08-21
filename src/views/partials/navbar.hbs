@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light   w-100">
-  <a class="navbar-brand font-weight-bold title1" href="#">
+  <a class="navbar-brand font-weight-bold title1" href="/">
     <img src="/img/96.png" width="45" height="45" alt="icon" class="hexa">
     WiFi Kart</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -15,20 +15,20 @@
       {{#if user}}
 
       <li class="nav-item">
-        <a class="nav-link font-weight-bold " href="/app/car/">Control</a>
+        <a class="nav-link font-weight-bold " href="/app/car/"><i class="fas fa-car-side"></i> Control</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="/about">Acerca de</a>
+        <a class="nav-link font-weight-bold" href="/about"><i class="fas fa-book"></i> Acerca de</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="/logout">Salir</a>
+        <a class="nav-link font-weight-bold" href="/logout"><i class="fas fa-sign-out-alt"></i> Salir</a>
       </li>
       {{else}}
-      <li class="nav-item active">
-        <a class="nav-link font-weight-bold " href="/">Inicio </a>
+      <li class="nav-item ">
+        <a class="nav-link font-weight-bold " href="/"><i class="fas fa-home"></i> Inicio </a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link font-weight-bold" href="/app/login">Entrar</a>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" href="/app/login"><i class="fas fa-sign-in-alt"></i> Entrar</a>
       </li>
      
 

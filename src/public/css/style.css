@@ -81,9 +81,9 @@ nav ul li{
     color: brown !important;
     
   }
-  .title1{
-    display: none !important;
-  }
+.cel{
+  display: none !important;
+}
   .pol{
     width: 18rem;
     height: 13rem;

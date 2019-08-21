@@ -13,24 +13,24 @@ userCtrl.postRegister = async (req, res) => {
   const { name, email, password } = req.body;
   let errors = [];
   if (name.length <= 0) {
-    errors.push({ text: "Ingresa un Nombre porfavor" });
+    errors.push({ text: "Ingresa un Nombre." });
   }
   if (email.length <= 0) {
-    errors.push({ text: "Ingresa un Email porfavor" });
+    errors.push({ text: "Ingresa un Email. " });
   }
   if (password.length <= 0) {
-    errors.push({ text: "Ingresa un Password porfavor" });
+    errors.push({ text: "Ingresa un Password. " });
   }
   if (name.length < 4) {
-    errors.push({ text: "Ingresa un nombre con almenos 4 caracteres." });
+    errors.push({ text: "Ingresa un nombre mayor de almenos 4 letras" });
   }
   if (email.length < 7) {
-    errors.push({ text: "Ingresa un email correcto" });
+    errors.push({ text: "Ingresa un email valido." });
   }
 
   if (password.length < 4) {
     errors.push({
-      text: "Porfavor ingresa un password de almenos 4 caracteres."
+      text: "Ingresa un password de almenos 4 caracteres."
     });
   }
 
@@ -44,7 +44,7 @@ userCtrl.postRegister = async (req, res) => {
   } else {
     let user = await User.findOne({ email });
     if (user) {
-      req.flash("error_msg", "El usuario ya se encuentra registrado");
+      req.flash("error_msg", "Este email ya se encuentra registrado");
       res.redirect("/app/register");
     } else {
       const newUser = new User({
@@ -58,7 +58,7 @@ userCtrl.postRegister = async (req, res) => {
       await newUser.save();
       req.flash(
         "success_msg",
-        "Usuario registrado ahora puedes iniciar sesion"
+        "Usuario registrado"
       );
       await res.redirect("/app/login");
     }
@@ -80,7 +80,7 @@ userCtrl.postLogin = (req, res, next) => {
 
 userCtrl.getLogout = async (req, res) => {
   req.logout();
-  req.flash("success_msg", " sesion finalizada");
+  req.flash("success_msg", " Sesión Finalizada");
   await res.redirect("app/login");
 };
 

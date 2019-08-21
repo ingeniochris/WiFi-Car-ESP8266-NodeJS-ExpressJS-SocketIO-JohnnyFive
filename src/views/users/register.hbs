@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <label for="email"> <strong>Email :</strong></label>
-        <input name="email" type="email" class="form-control rounded-pill  text-center" placeholder="Ingresa tu nombre" value="{{email}}" required
+        <input name="email" type="email" class="form-control rounded-pill  text-center" placeholder="Ingresa tu email" value="{{email}}" required
           autofocus>
       </div>
       <div class="form-group">
@@ -20,9 +20,13 @@
         <input name="password" type="password" class="form-control rounded-pill  text-center" placeholder="Ingresa tu password"
           name="{{password}}" required>
       </div>
-      <button type="submit" class="btn btn-block btn-primary"><strong>Registrate</strong></button>
-      <small id="passwordHelpInline" class="text-muted">
-      <a href="/app/login" class="text-decoration-none font-weight-lighter pt-5 title1">Ya tengo una cuenta.</a>
+      <div class="form-group">
+        <button type="submit" class="btn btn-block btn-primary"><strong>Registrate</strong></button>
+      </div>
+      
+      
+      <small class="text-muted">¿Ya tienes una cuenta? 
+      <a href="/app/login" class="font-weight-lighter pt-5 title1">Iniciar sesión</a>
     </small>
       
     </form>
