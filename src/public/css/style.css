@@ -7,6 +7,12 @@ body {
   margin: 0;
   padding:0;
   overflow: hidden;
+
+  color: azure;
+  
+}
+
+.bg-total{
   background: linear-gradient(rgba(219, 224, 243, 0.8), rgb(0, 106, 255, 0.9)),url("/img/C.png");
   color: antiquewhite;
   background-position: center;
@@ -14,7 +20,6 @@ body {
   background-repeat: no-repeat;
   background-origin: border-box;
   background-attachment: fixed;
-  color: azure;
 }
 
 .logo {
@@ -60,7 +65,7 @@ nav ul li{
   color: crimson;
 }
   nav ul li a:hover {
-    background: #1045b9a4;
+    background: rgba(16, 69, 185, 0.466);
   text-decoration-line: underline;
   border-radius: 15px;
   
@@ -70,14 +75,53 @@ nav ul li{
 }
 
 .title1{
-  text-shadow: 3px 3px 3px rgb(129, 43, 96);
+  text-shadow: 3px 3px 3px #dc3545;
   color: azure !important;
+}
+
+.base{
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  flex-direction: row;
+  box-sizing: border-box;
+  
+}
+.c1{
+  left: 0;
+  top: auto;
+  bottom: auto;
+  min-width: 360px;
+  max-width: 583px;
+  z-index: 1;
+  padding: 2rem;
+  align-self: center;
+  box-shadow: 0 2px 17px 0 rgba(0,0,0,.06);
+  box-sizing: border-box;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.514);
+}
+
+.c2{
+  z-index: 0;
+  margin-top: 1rem;
+  display: flex;
+  background-color: blue;
+  position: relative;
+  overflow: hidden;
+  max-width: 856px;
+  width: 92vw;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.514);
+  border-radius: 10px;
 }
 
 
 @media (max-width: 767.98px) { 
   nav{
-    background: rgba(255, 255, 255, 1) !important;
+    background: linear-gradient( rgba(255, 255, 255, 0.9), #c9d8f6)  !important;
     color: brown !important;
     
   }
@@ -87,5 +131,34 @@ nav ul li{
   .pol{
     width: 18rem;
     height: 13rem;
+  }
+  .base{
+    flex-direction: column;
+  }
+  .c1{
+    position: relative !important;
+    width: 10rem !important;
+   
+  }
+  .c2{
+    position: relative !important;
+    margin-bottom: 1rem;
+    height: 22rem !important;
+  }
+ }
+
+ @media (max-width: 992px){
+  .base{
+    flex-direction: column;
+  }
+  .c1{
+    position: relative !important;
+    width: 10rem !important;
+   
+  }
+  .c2{
+    position: relative !important;
+    margin-bottom: 1rem;
+    height: 22rem !important;
   }
  }
