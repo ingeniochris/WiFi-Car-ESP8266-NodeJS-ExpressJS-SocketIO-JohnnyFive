@@ -6,11 +6,13 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
 const Rollbar = require("rollbar");
-var favicon = require('serve-favicon')
+const favicon = require('serve-favicon');
+const MongoStore = require ('connect-mongo')(session);
 
 
 //instances
 const app = express();
+const db = require('./config/database');
 
 //settings
 app.set("port", process.env.PORT);
@@ -32,9 +34,12 @@ app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "Diynamic",
+    secret: process.env.SECRET_SESSION,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: db
+    })
   })
 );
 

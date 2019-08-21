@@ -6,4 +6,5 @@ const URI = process.env.MONGODB_CLUSTER
 
 mongoose.connect(URI, { useNewUrlParser: true, useCreateIndex: true });
 
-mongoose.connection.once("open", () => console.log("DB is conected"));
+const db = mongoose.connection;
+module.exports=db;

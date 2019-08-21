@@ -30,11 +30,10 @@ body {
 }
 
 .form-control {
-  background: transparent !important;
   color: #fff !important;
 }
 .form-group {
-  color: azure;
+  color: crimson;
 }
 
 a .fab {
