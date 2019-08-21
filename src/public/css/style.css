@@ -9,7 +9,7 @@ body {
 
 .bg-total {
   background: linear-gradient(rgba(219, 224, 243, 0.8), rgb(0, 106, 255, 0.9)),
-    url("/img/C.png");
+    url("/img/C-min.png");
   color: #dc3545;
   background-position: center;
   background-size: cover;
