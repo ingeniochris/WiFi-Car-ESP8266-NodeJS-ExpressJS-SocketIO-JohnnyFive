@@ -69,7 +69,7 @@ nav ul li a:hover {
 }
 
 .title1 {
-  text-shadow: 3px 3px 3px #dc3545;
+  text-shadow: 3px 3px 3px rgba(16, 69, 185, 0.466);
   color: azure !important;
 }
 
