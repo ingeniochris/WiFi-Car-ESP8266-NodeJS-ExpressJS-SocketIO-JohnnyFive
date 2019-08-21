@@ -6,7 +6,8 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
 const Rollbar = require("rollbar");
-var favicon = require('static-favicon');
+var favicon = require('serve-favicon')
+
 
 //instances
 const app = express();
@@ -26,7 +27,7 @@ app.engine(
 app.set("view engine", "hbs");
 
 //middlewares
-app.use(favicon());
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
 app.use(

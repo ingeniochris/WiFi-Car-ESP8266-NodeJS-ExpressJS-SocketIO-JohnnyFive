@@ -1,4 +1,4 @@
-<div class="container p-4 position-relative ovf">
+<div class="container p-4 position-relative ">
   <h1 class="title1 display-4 font-weight-bold">Login</h1>
   <div class="mx-auto " style="width: 20rem;">
     {{> msg}}
@@ -16,13 +16,17 @@
       </div>
 
 
-      <button type="submit" class="btn btn-block btn-success "><strong>Entrar</strong></button>
-      <div class="form-group">
-<a href="/app/register" class="text-decoration-none font-weight-lighter  title1"> Aun no tengo cuenta.</a>
-      </div>
-      
+      <button type="submit" class="btn btn-block btn-success position-relative "><strong>Entrar</strong></button>
     </form>
-    
   </div>
+  <div class="container">
+      <div class="mx-auto " style="width: 20rem;">
+        
+          <small id="passwordHelpInline" class="text-muted">
+      <a href="/app/register" class="text-decoration-none font-weight-lighter  title1"> Aun no tengo cuenta.</a>
+    </small>
+      
+      </div>
+    </div>
 
 </div>

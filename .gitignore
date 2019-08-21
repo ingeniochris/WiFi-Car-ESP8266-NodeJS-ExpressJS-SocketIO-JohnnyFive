@@ -61,8 +61,7 @@ typings/
 # next.js build output
 .next
 
-# images
-public/ 
+# config vscode
 .vscode/
 =======
 node_modules
