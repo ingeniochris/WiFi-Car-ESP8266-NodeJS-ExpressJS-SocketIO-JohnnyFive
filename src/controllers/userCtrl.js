@@ -58,7 +58,7 @@ userCtrl.postRegister = async (req, res) => {
       await newUser.save();
       req.flash(
         "success_msg",
-        "Usuario registrado"
+        "Registrado puedes iniciar sesión"
       );
       await res.redirect("/app/login");
     }
@@ -76,6 +76,10 @@ userCtrl.postLogin = (req, res, next) => {
     failureRedirect: "/app/login",
     failureFlash: true
   })(req, res, next);
+};
+
+userCtrl.getForgot = (req,res) =>{
+  res.render('users/forgot');
 };
 
 userCtrl.getLogout = async (req, res) => {

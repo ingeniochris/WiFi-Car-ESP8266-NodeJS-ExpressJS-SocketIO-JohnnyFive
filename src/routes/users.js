@@ -7,7 +7,9 @@ const {
   postRegister,
   getLogin,
   postLogin,
-  getLogout
+  getLogout,
+  getForgot,
+  postForgot
 } = require("../controllers/userCtrl");
 
 route
@@ -19,6 +21,11 @@ route
   .route("/app/login")
   .get(forwardAuthenticated, getLogin)
   .post(postLogin);
+
+route
+.route("/app/forgot")
+  .get(getForgot)
+//  .post(postForgot);
 
 route.route("/logout").get(getLogout);
 

@@ -5,7 +5,7 @@ const user = require("../models/userModel");
 
 module.exports = passport => {
   passport.serializeUser((user, done) => {
-    done(null, user._id);
+    done(null, user.id);
   });
 
   passport.deserializeUser(async (id, done) => {

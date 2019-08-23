@@ -10,7 +10,6 @@ body {
 .bg-total {
   background: linear-gradient(rgba(219, 224, 243, 0.8), rgb(0, 106, 255, 0.9)),
     url("/img/C-min.png");
-  color: #dc3545;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,8 +29,9 @@ body {
 }
 
 .form-group {
-  color: crimson;
+  color: rgba(0,0,0,.5);
 }
+
 
 a .fab {
   color: azure;
@@ -105,6 +105,15 @@ nav ul li a:hover {
   width: 92vw;
   box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.514);
   border-radius: 10px;
+}
+.tx {
+  text-shadow: 3px 3px 3px rgba(16, 69, 185, 0.466);
+  color: azure !important;
+}
+.txpass{
+  font-size: 14px;
+  text-shadow: 3px 3px 3px rgba(16, 69, 185, 0.466);
+  color: azure !important;
 }
 
 @media (max-width: 767.98px) {
