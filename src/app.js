@@ -49,7 +49,10 @@ app.use(
     })
   })
 );
-app.use(hostValidation({ hosts: [/.*\.wifi-kart\.herokuapp\.com$/] }))
+app.use(hostValidation({ hosts: [`127.0.0.1:${app.get('port')}`,
+                                 `localhost:${app.get('port')}`,
+                                 'wifi-kart.herokuapp.com/', 
+                                 /.*\.wifi-kart\.herokuapp\.com$/] }));
 
 // Passport middleware
 require("./config/passport")(passport);
