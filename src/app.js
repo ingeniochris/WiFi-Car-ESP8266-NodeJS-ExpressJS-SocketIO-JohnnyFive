@@ -9,8 +9,8 @@ const Rollbar = require("rollbar");
 const favicon = require('serve-favicon');
 const MongoStore = require ('connect-mongo')(session);
 const helmet = require ('helmet');
-var http = require('http');
-var express_enforces_ssl = require('express-enforces-ssl');
+const http = require('http');
+const express_enforces_ssl = require('express-enforces-ssl');
 const hostValidation = require('host-validation');
 
 
@@ -104,4 +104,4 @@ app.use(function(err, req, res, next) {
   res.status(500).sendFile(path.join(__dirname, 'public', '500.html'));
 });
 
-module.exports = {app,html};
+module.exports = {app,http};
