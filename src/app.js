@@ -14,6 +14,7 @@ const express_enforces_ssl = require('express-enforces-ssl');
 const hostValidation = require('host-validation');
 
 
+
 //instances
 const app = express();
 const db = require('./config/database');
@@ -49,10 +50,11 @@ app.use(
     })
   })
 );
-app.use(hostValidation({ hosts: [`127.0.0.1:${app.get('port')}`,
+app.use(hostValidation({ hosts: ['127.0.0.1:3000',
                                  `localhost:${app.get('port')}`,
-                                 'wifi-kart.herokuapp.com/', 
-                                 /.*\.wifi-kart\.herokuapp\.com$/] }));
+                                 'wifi-kart.herokuapp.com', 
+                                 /.*\.wifi-kart\.herokuapp\.com$/] }))
+
 
 // Passport middleware
 require("./config/passport")(passport);
