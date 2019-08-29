@@ -8,6 +8,10 @@ const session = require("express-session");
 const Rollbar = require("rollbar");
 const favicon = require('serve-favicon');
 const MongoStore = require ('connect-mongo')(session);
+const helmet = require ('helmet');
+var http = require('http');
+var express_enforces_ssl = require('express-enforces-ssl');
+const hostValidation = require('host-validation');
 
 
 //instances
@@ -29,6 +33,9 @@ app.engine(
 app.set("view engine", "hbs");
 
 //middlewares
+app.enable('trust proxy');
+app.use(express_enforces_ssl());
+app.use(helmet());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
@@ -42,6 +49,7 @@ app.use(
     })
   })
 );
+app.use(hostValidation({ hosts: [/.*\.wifi-kart\.herokuapp\.com$/] }))
 
 // Passport middleware
 require("./config/passport")(passport);
@@ -82,4 +90,18 @@ app.use(rollbar.errorHandler());
 // record a generic message and send it to Rollbar
 rollbar.log("Hello world!");
 
-module.exports = app;
+
+//404
+app.use((req,res,next)=>{
+  res.status(400).sendFile(path.join(__dirname, 'public','404.html'));
+});
+
+// Unhandled errors (500)
+app.use(function(err, req, res, next) {
+  console.error('An application error has occurred:');
+  console.error(err);
+  console.error(err.stack);
+  res.status(500).sendFile(path.join(__dirname, 'public', '500.html'));
+});
+
+module.exports = {app,html};

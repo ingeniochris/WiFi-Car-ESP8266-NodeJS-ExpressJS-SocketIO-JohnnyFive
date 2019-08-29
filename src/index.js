@@ -1,11 +1,16 @@
 require("dotenv").config();
 require("./config/database");
 
-const app = require("./app");
+const { app, http } = require("./app");
 
 async function Main() {
-  await app.listen(app.get("port"));
-  console.log(`server running in http://localhost:${app.get("port")}`);
+  try {
+    await http.createServer(app).listen(app.get("port"));
+    console.log(`Server running on https://localhost:${app.get("port")}`);
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
 }
 
 Main();
