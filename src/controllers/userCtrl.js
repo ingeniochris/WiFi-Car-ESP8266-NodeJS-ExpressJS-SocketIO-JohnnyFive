@@ -22,7 +22,7 @@ userCtrl.postRegister = async (req, res) => {
     errors.push({ text: "Ingresa un Password. " });
   }
   if (name.length < 4) {
-    errors.push({ text: "Ingresa un nombre mayor de almenos 4 letras" });
+    errors.push({ text: "Ingresa un nombre de almenos 4 letras" });
   }
   if (email.length < 7) {
     errors.push({ text: "Ingresa un email valido." });
@@ -78,9 +78,7 @@ userCtrl.postLogin = (req, res, next) => {
   })(req, res, next);
 };
 
-userCtrl.getForgot = (req,res) =>{
-  res.render('users/forgot');
-};
+
 
 userCtrl.getLogout = async (req, res) => {
   req.logout();

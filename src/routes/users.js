@@ -7,10 +7,10 @@ const {
   postRegister,
   getLogin,
   postLogin,
-  getLogout,
-  getForgot,
-  postForgot
+  getLogout
 } = require("../controllers/userCtrl");
+
+const { getForgot, postForgot } = require('../controllers/updatePasswCtrl');
 
 route
   .route("/app/register")
@@ -24,8 +24,12 @@ route
 
 route
 .route("/app/forgot")
-  .get(getForgot)
-//  .post(postForgot);
+     .get(getForgot)
+     .post(postForgot);
+
+route
+.route('/app/reset')
+      .get((req,res)=> res.render('users/reset'))     
 
 route.route("/logout").get(getLogout);
 

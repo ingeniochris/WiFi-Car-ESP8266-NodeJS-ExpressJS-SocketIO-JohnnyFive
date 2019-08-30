@@ -1,16 +1,18 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+const bodyParser = require('body-parser');
 const hbs = require("express-handlebars");
 const passport = require("passport");
 const flash = require("connect-flash");
+const cookieParser = require('cookie-parser');
 const session = require("express-session");
 const Rollbar = require("rollbar");
 const favicon = require('serve-favicon');
 const MongoStore = require ('connect-mongo')(session);
 const helmet = require ('helmet');
 const http = require('http');
-const express_enforces_ssl = require('express-enforces-ssl');
+//const express_enforces_ssl = require('express-enforces-ssl');
 const hostValidation = require('host-validation');
 
 
@@ -34,8 +36,11 @@ app.engine(
 app.set("view engine", "hbs");
 
 //middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(cookieParser());
 app.enable('trust proxy');
-app.use(express_enforces_ssl());
+//app.use(express_enforces_ssl());
 app.use(helmet());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(morgan("tiny"));
@@ -53,7 +58,9 @@ app.use(
 app.use(hostValidation({ hosts: ['127.0.0.1:3000',
                                  `localhost:${app.get('port')}`,
                                  'wifi-kart.herokuapp.com', 
-                                 /.*\.wifi-kart\.herokuapp\.com$/] }))
+                                 /.*\.wifi-kart\.herokuapp\.com$/] }));
+
+                          
 
 
 // Passport middleware
@@ -91,8 +98,6 @@ const rollbar = new Rollbar({
 
 // Use the rollbar error handler to send exceptions to your rollbar account
 app.use(rollbar.errorHandler());
-
-// record a generic message and send it to Rollbar
 rollbar.log("Hello world!");
 
 
