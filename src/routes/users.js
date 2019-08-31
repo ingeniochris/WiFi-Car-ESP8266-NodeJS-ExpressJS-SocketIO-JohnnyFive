@@ -28,7 +28,7 @@ route
      .post(postForgot);
 
 route
-.route('/app/reset')
+.route('/app/reset/:token')
       .get(getReset)
       
       

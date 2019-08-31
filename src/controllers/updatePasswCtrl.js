@@ -127,8 +127,25 @@ updatePassCtrl.postForgot = (req, res, next) => {
 };
 
 
-updatePassCtrl.getReset = (req,res,next)=> {
- const validationErrors = [];
+updatePassCtrl.getReset = async (req,res)=> {
+  const {token} = req.params.token
+  const errors = [];
+  if (!validator.isHexadecimal(req.params.token)) errors.push({ text: 'Token invalido, intente nuevamente.' });
+  if (errors.length > 0) {
+    res.render("users/forgot", {
+      errors
+    });
+  }
+
+  const user = await User.findOne({ resetPasswordToken : token });
+                      
+   if(!user){
+     req.flash("error_msg",
+     "Token invalido o ah expirado");
+     return res.redirect('/app/forgot');
+   }
+
+   res.render('users/reset');
 
 
 };
