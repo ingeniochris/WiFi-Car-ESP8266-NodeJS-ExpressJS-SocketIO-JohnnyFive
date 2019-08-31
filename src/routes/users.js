@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const route = Router();
 
-const { forwardAuthenticated } = require("../helpers/auth");
+const { forwardAuthenticated, ensureAuthentication } = require("../helpers/auth");
 const {
   getRegister,
   postRegister,
@@ -10,7 +10,7 @@ const {
   getLogout
 } = require("../controllers/userCtrl");
 
-const { getForgot, postForgot } = require('../controllers/updatePasswCtrl');
+const { getForgot, postForgot, getReset } = require('../controllers/updatePasswCtrl');
 
 route
   .route("/app/register")
@@ -29,7 +29,9 @@ route
 
 route
 .route('/app/reset')
-      .get((req,res)=> res.render('users/reset'))     
+      .get(getReset)
+      
+      
 
 route.route("/logout").get(getLogout);
 

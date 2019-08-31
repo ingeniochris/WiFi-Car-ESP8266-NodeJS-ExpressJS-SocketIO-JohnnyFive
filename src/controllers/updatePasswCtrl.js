@@ -2,21 +2,23 @@ const { promisify } = require("util");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const randomBytesAsync = promisify(crypto.randomBytes);
+const validator = require('validator');
 
 const User = require("../models/userModel");
 const updatePassCtrl = {};
 
+//getForgot
 updatePassCtrl.getForgot = (req, res, next) => {
   res.render("users/forgot");
 };
 
+//postForgot
 updatePassCtrl.postForgot = (req, res, next) => {
-  const { email } = req.body;
+  let { email } = req.body;
   const errors = [];
-  if (email.length <= 0) {
-    errors.push({ text: "Ingresa un Email. " });
-  }
-
+  if (!validator.isEmail(email)) errors.push({ text: 'Porfavor ingresa un email valido' });
+  if (email.length <= 0) errors.push({ text: "Ingresa un Email. " });
+  
   if (errors.length > 0) {
     res.render("users/forgot", {
       errors,
@@ -24,11 +26,13 @@ updatePassCtrl.postForgot = (req, res, next) => {
     });
   }
 
+  email = validator.normalizeEmail(email, { gmail_remove_dots: false });
+
   const createRandomToken = randomBytesAsync(16).then(buf =>
     buf.toString("hex")
   );
 
-  const setRandomToken = async (token, next) => {
+  const setRandomToken = async (token) => {
     let user = await User.findOne({ email });
     if (!user) {
       req.flash(
@@ -44,7 +48,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
     return user;
   };
 
-  const sendForgotPasswordEmail = async (user, next) => {
+  const sendForgotPasswordEmail = async (user) => {
     try {
       if (!user) {
         return;
@@ -121,6 +125,14 @@ updatePassCtrl.postForgot = (req, res, next) => {
     .then(() => res.redirect("/app/forgot"))
     .catch(next);
 };
+
+
+updatePassCtrl.getReset = (req,res,next)=> {
+ const validationErrors = [];
+
+
+};
+
 
 
 
