@@ -12,7 +12,7 @@ const favicon = require('serve-favicon');
 const MongoStore = require ('connect-mongo')(session);
 const helmet = require ('helmet');
 const http = require('http');
-//const express_enforces_ssl = require('express-enforces-ssl');
+const express_enforces_ssl = require('express-enforces-ssl');
 const hostValidation = require('host-validation');
 
 
@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cookieParser());
 app.enable('trust proxy');
-//app.use(express_enforces_ssl());
+app.use(express_enforces_ssl());
 app.use(helmet());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(morgan("tiny"));

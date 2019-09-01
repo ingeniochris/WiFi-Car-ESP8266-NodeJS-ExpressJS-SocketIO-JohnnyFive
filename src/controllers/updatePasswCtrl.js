@@ -161,9 +161,9 @@ updatePassCtrl.postReset = (req,res)=>{
  if(!validator.isHexadecimal(req.params.token)) errors.push({text:' Token invalido, intente de nuevo'})
 
  if(errors.length>0){
-   res.render('users/forgot',{
-     errors
-   })
+  req.flash('error_msg', 'Not Authorized');
+  return res.redirect('back');
+ // return res.render('users/forgot',{errors});
  }
 
  const resetPassword =  () =>
