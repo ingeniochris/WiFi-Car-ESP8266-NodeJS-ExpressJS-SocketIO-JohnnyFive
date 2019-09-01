@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+const validator = require('validator');
 
 const User = require("../models/userModel");
 
@@ -24,15 +25,10 @@ userCtrl.postRegister = async (req, res) => {
   if (name.length < 4) {
     errors.push({ text: "Ingresa un nombre de almenos 4 letras" });
   }
-  if (email.length < 7) {
-    errors.push({ text: "Ingresa un email valido." });
-  }
+  if (!validator.isEmail(email)) errors.push({ text: "Ingresa un email valido." });
 
-  if (password.length < 4) {
-    errors.push({
-      text: "Ingresa un password de almenos 4 caracteres."
-    });
-  }
+  if(!validator.isLength(password,{min:8})) errors.push({text:'El Password debe se mayor a 8 caracteres'});
+
 
   if (errors.length > 0) {
     res.render("users/register", {

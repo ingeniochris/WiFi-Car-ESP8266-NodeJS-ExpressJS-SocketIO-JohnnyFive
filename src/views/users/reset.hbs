@@ -3,7 +3,7 @@
     <div class="mx-auto " style="width: 20rem;">
 
 
-        <form action="" method="post">
+        <form action="/app/reset/{{user.resetPasswordToken}}" method="POST">
             <div class="form-group">
                 <label for="password"><strong>Nuevo password</strong></label>
                 <input class="form-control text-center" type="password" name="password" value=""
