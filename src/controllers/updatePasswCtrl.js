@@ -72,7 +72,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
       const mailOptions = {
         to: user.email,
         from: "	dev.chrisweb@gmail.com",
-        subject: "Solicitud de cambio de contraseña",
+        subject: "Solicitud de cambio de contraseña  App Wifi Kart",
         text: `Solicitud de cambio de password wifikart`,
             html: `<center><img  src="https://github.com/jesus-khristian/WiFi-Car-ESP8266-NodeJS-ExpressJS-SocketIO-JohnnyFive/blob/master/src/public/img/152.png?raw=true"/></center>
                     <h2 style="text-align: center;">Has solicitado un cambio de contraseña</h2> <br>
@@ -135,7 +135,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
     "error_msg",
     "RECAPTCHA no seleccionado"
   );
-  
+  res.redirect('back');
 }
 };
 
@@ -211,7 +211,7 @@ console.log(errors)
     const mailOptions = {
       to: user.email,
       from: "	dev.chrisweb@gmail.com",
-      subject: "Reset you WiFi Kart password",
+      subject: "Solicitud de cambio de contraseña wifikart",
       text: `Hola \n\n Le confirmamos que la contraseña de su cuenta ${user.email} acaba de cambiar satisfactoriamente.`
     };
     const sm = await transporter.sendMail(mailOptions);
