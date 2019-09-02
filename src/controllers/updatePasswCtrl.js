@@ -5,12 +5,13 @@ const randomBytesAsync = promisify(crypto.randomBytes);
 const validator = require('validator');
 const bcrypt = require("bcryptjs");
 
+
 const User = require("../models/userModel");
 const updatePassCtrl = {};
 
 //getForgot
 updatePassCtrl.getForgot = (req, res, next) => {
-  res.render("users/forgot");
+  res.render("users/forgot", { captcha:res.recaptcha });
 };
 
 //postForgot
@@ -28,6 +29,10 @@ updatePassCtrl.postForgot = (req, res, next) => {
   }
 
   email = validator.normalizeEmail(email, { gmail_remove_dots: false });
+  //recachapt
+
+
+  //fin recachap
 
   const createRandomToken = randomBytesAsync(16).then(buf =>
     buf.toString("hex")
@@ -66,16 +71,14 @@ updatePassCtrl.postForgot = (req, res, next) => {
       const mailOptions = {
         to: user.email,
         from: "	dev.chrisweb@gmail.com",
-        subject: "Reset you WiFi Kart password",
-        text: `
-            Está recibiendo este correo electrónico porque usted (u otra persona) ha solicitado restablecer la contraseña de su cuenta.\n
-            Haga clic en el siguiente enlace o péguelo en su navegador para completar el proceso :\n\n
-              http://${req.headers.host}/app/reset/${token}\n\n
-            Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios..\n\n
-            WiFi Kart by Christian Castillo\n
-            https://wifi-kart.herokuapp.com/ \n\n
-            http://chrisweb.me \n\n
-            `
+        subject: "Solicitud de cambio de contraseña",
+        text: `Solicitud de cambio de password wifikart`,
+            html: `<center><img  src="https://github.com/jesus-khristian/WiFi-Car-ESP8266-NodeJS-ExpressJS-SocketIO-JohnnyFive/blob/master/src/public/img/152.png?raw=true"/></center>
+                    <h2 style="text-align: center;">Has solicitado un cambio de contraseña</h2> <br>
+                    <h3 style="text-align: center;">PARA RESETEARLA HAZ CLICK : <a href="http://${req.headers.host}/app/reset/${token}">AQUI</a> </h3><br>
+                    <hr style="color: #0056b2;" />
+                   <h3 style="text-align: center;">Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios.</h3> <br>
+                   <p style="text-align: center;">nota.- Este enlace solo tiene una duracion de 10 min.</p> ` ,    
       };
       const sm = await transporter.sendMail(mailOptions);
       req.flash(
@@ -102,7 +105,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
         let sm2 = await transporter.sendMail(mailOptions);
         req.flash(
           "success_msg",
-          `Se ha enviado un correo electrónico a ${user.email} con más instrucciones.`
+          `Solicitud realizada con éxito. \n Se ha enviado un correo electrónico a \n ${user.email} con más instrucciones.`
         );
 
         return sm2;
@@ -161,7 +164,8 @@ updatePassCtrl.postReset = (req,res)=>{
  if(!validator.isHexadecimal(req.params.token)) errors.push({text:' Token invalido, intente de nuevo'})
 
  if(errors.length>0){
-  req.flash('error_msg', 'Not Authorized');
+console.log(errors)
+ req.flash('error', errors);
   return res.redirect('back');
  // return res.render('users/forgot',{errors});
  }
@@ -246,7 +250,7 @@ updatePassCtrl.postReset = (req,res)=>{
   };
   resetPassword()
   .then(sendResetPasswordEmail)
-  .then(() => { if (!res.finished) res.redirect('/'); })
+  .then(() => { if (!res.finished) res.redirect('/app/login'); })
   .catch((err) => next(err));
 };
 

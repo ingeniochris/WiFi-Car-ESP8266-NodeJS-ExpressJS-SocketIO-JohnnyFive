@@ -1,4 +1,8 @@
+const Recaptcha = require('express-recaptcha').RecaptchaV3;
 const { Router } = require("express");
+
+
+const recaptcha = new Recaptcha(process.env.SITE_KEY, process.env.SECRET_KEY_RECAPTCHA ,{callback:'cb'});
 const route = Router();
 
 const { forwardAuthenticated, ensureAuthentication } = require("../helpers/auth");
@@ -24,13 +28,13 @@ route
 
 route
 .route("/app/forgot")
-     .get(getForgot)
-     .post(postForgot);
+     .get(recaptcha.middleware.render,getForgot)
+     .post(recaptcha.middleware.verify,postForgot);
 
 route
 .route('/app/reset/:token')
-      .get(getReset)
-      .post(postReset)
+      .get( getReset)
+      .post( postReset)
       
       
 
