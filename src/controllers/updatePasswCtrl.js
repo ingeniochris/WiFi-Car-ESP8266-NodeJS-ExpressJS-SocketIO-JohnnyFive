@@ -135,7 +135,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
     "error_msg",
     "RECAPTCHA no seleccionado"
   );
-  req.redirect('back');
+  
 }
 };
 
