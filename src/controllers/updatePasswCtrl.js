@@ -16,6 +16,7 @@ updatePassCtrl.getForgot = (req, res, next) => {
 
 //postForgot
 updatePassCtrl.postForgot = (req, res, next) => {
+   if (!req.recaptcha.error) {
   let { email } = req.body;
   const errors = [];
   if (!validator.isEmail(email)) errors.push({ text: 'Porfavor ingresa un email valido' });
@@ -128,6 +129,14 @@ updatePassCtrl.postForgot = (req, res, next) => {
     .then(sendForgotPasswordEmail)
     .then(() => res.redirect("/app/forgot"))
     .catch(next);
+
+}else{
+  req.flash(
+    "error_msg",
+    "RECAPTCHA no seleccionado"
+  );
+  req.redirect('back');
+}
 };
 
 
