@@ -1,5 +1,5 @@
 {
-  "name": "chris-kart",
+  "name": "chris-car",
   "version": "3.0.0",
   "description": "The application for the control of a robot car used raspberry pi 3 or ESP8266",
   "main": "index.js",
