@@ -1,25 +1,22 @@
 const express = require("express");
+const app = express();
 const morgan = require("morgan");
 const path = require("path");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const hbs = require("express-handlebars");
 const passport = require("passport");
 const flash = require("connect-flash");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const Rollbar = require("rollbar");
-const favicon = require('serve-favicon');
-const MongoStore = require ('connect-mongo')(session);
-const helmet = require ('helmet');
-const http = require('http');
-const express_enforces_ssl = require('express-enforces-ssl');
-const hostValidation = require('host-validation');
+const favicon = require("serve-favicon");
+const MongoStore = require("connect-mongo")(session);
+const helmet = require("helmet");
+const http = require("http").createServer(app);
+const express_enforces_ssl = require("express-enforces-ssl");
+const hostValidation = require("host-validation");
 
-
-
-//instances
-const app = express();
-const db = require('./config/database');
+const db = require("./config/database");
 
 //settings
 app.set("port", process.env.PORT);
@@ -37,12 +34,12 @@ app.set("view engine", "hbs");
 
 //middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.enable('trust proxy');
+app.enable("trust proxy");
 app.use(express_enforces_ssl());
 app.use(helmet());
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, "public", "/img/favicon.ico")));
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -55,13 +52,16 @@ app.use(
     })
   })
 );
-app.use(hostValidation({ hosts: ['127.0.0.1:3000',
-                                 `localhost:${app.get('port')}`,
-                                 'wifikart.herokuapp.com', 
-                                 /.*\.wifikart\.herokuapp\.com$/] }));
-
-                          
-
+app.use(
+  hostValidation({
+    hosts: [
+      "127.0.0.1:3000",
+      `localhost:${app.get("port")}`,
+      "wifikart.herokuapp.com",
+      /.*\.wifikart\.herokuapp\.com$/
+    ]
+  })
+);
 
 // Passport middleware
 require("./config/passport")(passport);
@@ -88,7 +88,7 @@ app.use(require("./routes/control"));
 //statics files
 app.use(express.static(path.join(__dirname, "public")));
 
-//Rollbar  Dev 
+//Rollbar  Dev
 const rollbar = new Rollbar({
   accessToken: process.env.ROLLBAR,
   environment: "development",
@@ -100,18 +100,19 @@ const rollbar = new Rollbar({
 app.use(rollbar.errorHandler());
 rollbar.log("Hello world!");
 
-
 //404
-app.use((req,res,next)=>{
-  res.status(400).sendFile(path.join(__dirname, 'public','404.html'));
+app.use((req, res, next) => {
+  res.status(400).sendFile(path.join(__dirname, "public", "404.html"));
 });
 
 // Unhandled errors (500)
 app.use(function(err, req, res, next) {
-  console.error('An application error has occurred:');
+  console.error("An application error has occurred:");
   console.error(err);
   console.error(err.stack);
-  res.status(500).sendFile(path.join(__dirname, 'public', '500.html'));
+  res.status(500).sendFile(path.join(__dirname, "public", "500.html"));
 });
 
-module.exports = {app,http};
+module.exports = { app, http };
+//socket io
+require("./config/socket");
