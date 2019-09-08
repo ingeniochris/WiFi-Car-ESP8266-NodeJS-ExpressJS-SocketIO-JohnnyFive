@@ -34,22 +34,22 @@
     "connect-mongo": "^3.0.0",
     "cookie-parser": "^1.4.4",
     "crypto": "^1.0.1",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.1.0",
     "etherport-client": "^0.1.4",
     "express": "^4.17.1",
     "express-enforces-ssl": "^1.1.0",
     "express-handlebars": "^3.1.0",
     "express-recaptcha": "^5.0.1",
     "express-session": "^1.16.2",
-    "helmet": "^3.20.1",
+    "helmet": "^3.21.0",
     "host-validation": "^2.0.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.6.9",
+    "mongoose": "^5.6.13",
     "morgan": "^1.9.1",
     "nodemailer": "^6.3.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "rollbar": "^2.12.0",
+    "rollbar": "^2.12.3",
     "serialport": "^7.1.5",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.2.0",
@@ -57,6 +57,6 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.2"
   }
 }
