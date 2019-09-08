@@ -13,22 +13,14 @@ userCtrl.getRegister = (req, res, next) => {
 userCtrl.postRegister = async (req, res) => {
   const { name, email, password } = req.body;
   let errors = [];
-  if (name.length <= 0) {
-    errors.push({ text: "Ingresa un Nombre." });
-  }
-  if (email.length <= 0) {
-    errors.push({ text: "Ingresa un Email. " });
-  }
-  if (password.length <= 0) {
-    errors.push({ text: "Ingresa un Password. " });
-  }
-  if (name.length < 4) {
-    errors.push({ text: "Ingresa un nombre de almenos 4 letras" });
-  }
+
+
+
+  if(!validator.isLength(name,{min:4})) errors.push({text:'Ingresa un nombre de almenos 4 letras'});
+  if(!validator.isLength(name,{max:20})) errors.push({text:'Intenta con un nombre mas corto'});
   if (!validator.isEmail(email)) errors.push({ text: "Ingresa un email valido." });
-
-  if(!validator.isLength(password,{min:8})) errors.push({text:'El Password debe se mayor a 8 caracteres'});
-
+  if(!validator.isLength(password,{min:8})) errors.push({text:'Por su seguridad se recomienda un password de 8 digitos'});
+  if(!validator.isLength(password,{max:20})) errors.push({text:'Intenta con un password menor a 20 digitos'});
 
   if (errors.length > 0) {
     res.render("users/register", {

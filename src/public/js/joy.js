@@ -1,6 +1,6 @@
 var socket = io();
 
-
+(function (){ 
   console.log(
     "touchscreen is",
     VirtualJoystick.touchScreenAvailable() ? "available" : "not available"
@@ -22,6 +22,7 @@ var socket = io();
     socket.emit("Web_stop", { pi_stop: "stop" });
   });
 
+
   setInterval(function() {
     if (joystick.right()) {
       socket.emit("Web_right", { pi_right: "right" });
@@ -36,4 +37,9 @@ var socket = io();
       socket.emit("Web_down", { pi_down: "down" });
     }
   }, (1 / 30) * 1000);
+
+})();
+
+
+  
 

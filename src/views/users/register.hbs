@@ -1,4 +1,5 @@
-<div class="container mt-4 position-relative ovf ">
+
+<div class="container mt-4 position-relative ovf mt-5 pt-4 ">
   <h1 class="title1 display-4 font-weight-bold">Registro</h1>
   <div class="mx-auto " style="width: 20rem;">
     {{> msg}}
@@ -7,7 +8,7 @@
       <div class="form-group">
         <label for="name"> <strong>Nombre</strong></label>
         <input name="name" type="text" class="form-control text-center" placeholder="Ingresa tu nombre"
-          value="{{name}}" required autofocus>
+          value="{{name}}" size="20" required autofocus>
       </div>
       <div class="form-group">
         <label for="email"> <strong>Email :</strong></label>
@@ -17,7 +18,7 @@
       <div class="form-group">
         <label for="password"><strong>Password:</strong></label>
         <input name="password" type="password" class="form-control text-center"
-          placeholder="Ingresa tu password" name="{{password}}" required>
+          placeholder="Ingresa tu password" name="{{password}}" size="20" required>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-block btn-primary"><strong>Registrate</strong></button>

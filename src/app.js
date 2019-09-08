@@ -57,8 +57,8 @@ app.use(
     hosts: [
       "127.0.0.1:3000",
       `localhost:${app.get("port")}`,
-      "wifikart.herokuapp.com",
-      /.*\.wifikart\.herokuapp\.com$/
+      "wificar.herokuapp.com",
+      /.*\.wificar\.herokuapp\.com$/
     ]
   })
 );

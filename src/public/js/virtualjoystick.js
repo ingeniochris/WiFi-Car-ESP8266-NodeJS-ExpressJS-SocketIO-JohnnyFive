@@ -10,7 +10,7 @@ var VirtualJoystick	= function(opts)
 	this._baseX		= this._stickX = opts.baseX || 0
 	this._baseY		= this._stickY = opts.baseY || 0
 	this._limitStickTravel	= opts.limitStickTravel || false
-	this._stickRadius	= opts.stickRadius !== undefined ? opts.stickRadius : 50
+	this._stickRadius	= opts.stickRadius !== undefined ? opts.stickRadius : 40
 	this._useCssTransform	= opts.useCssTransform !== undefined ? opts.useCssTransform : false
 
 	this._container.style.position	= "absolute"
