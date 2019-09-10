@@ -7,18 +7,14 @@ io.on("connection", socket => {
 
   socket.on("Web_up", data => {
     var mensajeweb_up = data.pi_up;
-    console.log(
-      "Cliente web ID:" + socket.id + " Adelante :" + mensajeweb_up
-    );
+    console.log("Cliente web ID:" + socket.id + " Adelante :" + mensajeweb_up);
 
     io.emit("ParaWemos_up", { mensajeweb_up });
   });
 
   socket.on("Web_down", data => {
     var mensajeweb_down = data.pi_down;
-    console.log(
-      "Cliente web ID:" + socket.id + " Atras :" + mensajeweb_down
-    );
+    console.log("Cliente web ID:" + socket.id + " Atras :" + mensajeweb_down);
 
     io.emit("ParaWemos_down", { mensajeweb_down });
   });
@@ -28,7 +24,6 @@ io.on("connection", socket => {
     console.log(
       "Cliente web ID:" + socket.id + " Derecha :" + mensajeweb_right
     );
-
     io.emit("ParaWemos_right", { mensajeweb_right });
   });
 
@@ -37,16 +32,12 @@ io.on("connection", socket => {
     console.log(
       "Cliente web ID:" + socket.id + " Izquierda :" + mensajeweb_left
     );
-
     io.emit("ParaWemos_left", { mensajeweb_left });
   });
 
   socket.on("Web_stop", data => {
     var mensajeweb_stop = data.pi_stop;
-    console.log(
-      "Cliente web ID:" + socket.id + " Stop:" + mensajeweb_stop
-    );
-
+    console.log("Cliente web ID:" + socket.id + " Stop:" + mensajeweb_stop);
     io.emit("ParaWemos_stop", { mensajeweb_stop });
   });
 
@@ -55,4 +46,3 @@ io.on("connection", socket => {
     console.log("Desconectado ID :", socket.id);
   });
 });
-

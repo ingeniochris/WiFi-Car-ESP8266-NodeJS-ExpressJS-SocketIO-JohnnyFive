@@ -1,7 +1,7 @@
 const { promisify } = require("util");
 const crypto = require("crypto");
-const nodemailer = require("nodemailer");
 const randomBytesAsync = promisify(crypto.randomBytes);
+const nodemailer = require("nodemailer");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
@@ -30,10 +30,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
     }
 
     email = validator.normalizeEmail(email, { gmail_remove_dots: false });
-    //recachapt
-
-    //fin recachap
-
+ 
     const createRandomToken = randomBytesAsync(16).then(buf =>
       buf.toString("hex")
     );
@@ -78,7 +75,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
                     <h3 style="text-align: center;">PARA RESETEARLA HAZ CLICK : <a href="http://${req.headers.host}/app/reset/${token}">AQUI</a> </h3><br>
                     <hr style="color: #0056b2;" />
                    <h3 style="text-align: center;">Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios.</h3> <br>
-                   <p style="text-align: center;">nota.- Este enlace solo tiene una duracion de 10 min.</p> `
+                   <p style="text-align: center;">© 2019 Copyright: chrisweb.me </p> `
         };
         const sm = await transporter.sendMail(mailOptions);
         req.flash(
@@ -129,7 +126,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
       .then(() => res.redirect("/app/forgot"))
       .catch(next);
   } else {
-    req.flash("error_msg", "RECAPTCHA no seleccionado");
+    req.flash("error_msg", "Por favor seleccione RECAPTCHA ");
     res.redirect("back");
   }
 };

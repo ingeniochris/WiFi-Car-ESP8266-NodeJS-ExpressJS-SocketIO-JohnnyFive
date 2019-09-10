@@ -57,10 +57,10 @@ userCtrl.getLogin = (req, res) => {
   res.render("users/login");
 };
 
-userCtrl.postLogin = (req, res, next) => {
+userCtrl.postLogin = async (req, res, next) => {
   if (req.user) return next();
   passport.authenticate("local", {
-    successRedirect: "/app/car",
+    successRedirect: `/app/car`,
     failureRedirect: "/app/login",
     failureFlash: true
   })(req, res, next);
