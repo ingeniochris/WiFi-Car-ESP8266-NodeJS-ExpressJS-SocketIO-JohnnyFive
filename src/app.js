@@ -41,7 +41,7 @@ app.use(express_enforces_ssl());
 app.use(helmet());
 app.use(favicon(path.join(__dirname, "public", "/img/favicon.ico")));
 app.use(morgan("tiny"));
-//app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SECRET_SESSION,
