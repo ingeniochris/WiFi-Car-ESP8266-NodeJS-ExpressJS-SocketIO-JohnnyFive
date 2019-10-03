@@ -70,7 +70,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
           from: "	dev.chrisweb@gmail.com",
           subject: "Solicitud de cambio de contraseña  App Wifi Kart",
           text: `Solicitud de cambio de password wifikart`,
-          html: `<center><img  src="https://github.com/jesus-khristian/WiFi-Car-ESP8266-NodeJS-ExpressJS-SocketIO-JohnnyFive/blob/master/src/public/img/152.png?raw=true"/></center>
+          html: `<center><img src="https://img.icons8.com/nolan/128/000000/robot-2.png"></center>
                     <h2 style="text-align: center;">Has solicitado un cambio de contraseña</h2> <br>
                     <h3 style="text-align: center;">PARA RESETEARLA HAZ CLICK : <a href="http://${req.headers.host}/app/reset/${token}">AQUI</a> </h3><br>
                     <hr style="color: #0056b2;" />
@@ -208,7 +208,13 @@ updatePassCtrl.postReset = (req, res) => {
         to: user.email,
         from: "	dev.chrisweb@gmail.com",
         subject: "Solicitud de cambio de contraseña wifikart",
-        text: `Hola \n\n Le confirmamos que la contraseña de su cuenta ${user.email} acaba de cambiar satisfactoriamente.`
+        text: `Solicitud de cambio de password wifikart`,
+          html: `<center><img src="https://img.icons8.com/nolan/128/000000/robot-2.png"></center>
+                    <h2 style="text-align: center;">Hola le confirmamos : </h2> <br>
+                    <h3 style="text-align: center;">El password de la cuenta ${user.email} Cambio satisfactoriamente</h3><br>
+                    <hr style="color: #0056b2;" />
+                   <h3 style="text-align: center;"></h3> <br>
+                   <p style="text-align: center;">© 2019 Copyright: chrisweb.me </p> `
       };
       const sm = await transporter.sendMail(mailOptions);
       req.flash("success_msg", "Su password se a actualizado correctamente");
