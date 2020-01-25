@@ -75,7 +75,7 @@ updatePassCtrl.postForgot = (req, res, next) => {
                     <h3 style="text-align: center;">PARA RESETEARLA HAZ CLICK : <a href="http://${req.headers.host}/app/reset/${token}">AQUI</a> </h3><br>
                     <hr style="color: #0056b2;" />
                    <h3 style="text-align: center;">Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios.</h3> <br>
-                   <p style="text-align: center;">© 2019 Copyright: chrisweb.me </p> `
+                   <p style="text-align: center;">© 2020 Copyright: chrisweb.me </p> `
         };
         const sm = await transporter.sendMail(mailOptions);
         req.flash(
@@ -214,7 +214,7 @@ updatePassCtrl.postReset = (req, res) => {
                     <h3 style="text-align: center;">El password de la cuenta ${user.email} Cambio satisfactoriamente</h3><br>
                     <hr style="color: #0056b2;" />
                    <h3 style="text-align: center;"></h3> <br>
-                   <p style="text-align: center;">© 2019 Copyright: chrisweb.me </p> `
+                   <p style="text-align: center;">© 2020 Copyright: chrisweb.me </p> `
       };
       const sm = await transporter.sendMail(mailOptions);
       req.flash("success_msg", "Su password se a actualizado correctamente");
