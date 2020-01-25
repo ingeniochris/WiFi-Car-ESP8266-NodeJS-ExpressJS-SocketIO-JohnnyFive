@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/jesus-khristian/CarroWiFi-ESP8266-NodeJS-ExpressJS-SocketIO-JohnnyFive#readme",
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -44,7 +44,7 @@
     "helmet": "^3.21.2",
     "host-validation": "^2.0.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.8.5",
+    "mongoose": "^5.8.9",
     "morgan": "^1.9.1",
     "nodemailer": "^6.4.2",
     "passport": "^0.4.1",
@@ -54,7 +54,7 @@
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "validator": "^12.1.0"
+    "validator": "^12.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
