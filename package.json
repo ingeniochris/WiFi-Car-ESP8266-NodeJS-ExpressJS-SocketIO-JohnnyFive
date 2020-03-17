@@ -57,6 +57,8 @@
     "validator": "^12.2.0"
   },
   "devDependencies": {
+    "acorn": "^7.1.1",
+    "minimist": "^1.2.5",
     "nodemon": "^2.0.2"
   }
 }
