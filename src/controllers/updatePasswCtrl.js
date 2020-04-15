@@ -143,7 +143,7 @@ updatePassCtrl.getReset = async (req, res, next) => {
 
   User.findOne({ resetPasswordToken: req.params.token })
     .where("resetPasswordExpires")
-    .get(Date.now())
+    .gt(Date.now())
     .exec((err, user) => {
       if (err) {
         return next(err);
@@ -176,7 +176,7 @@ updatePassCtrl.postReset = (req, res) => {
   const resetPassword = () =>
     User.findOne({ resetPasswordToken: req.params.token })
       .where("resetPasswordExpires")
-      .get(Date.now())
+      .gt(Date.now())
       .then(async user => {
         if (!user) {
           req.flash("errors", { text: "Token invalido o ah caducado." });
