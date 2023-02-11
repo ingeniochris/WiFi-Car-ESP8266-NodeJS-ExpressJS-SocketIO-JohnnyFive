@@ -58,6 +58,6 @@
   "devDependencies": {
     "acorn": "^8.0.1",
     "minimist": "^1.2.6",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.20"
   }
 }
